@@ -7,12 +7,21 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 
 const Home = () => {
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [hasInteracted, setHasInteracted] = useState(false);
 
   const handlePlay = () => {
-    audioRef.current?.play();
-    setHasInteracted(true);
+    if (audioRef.current) {
+      audioRef.current
+        .play()
+        .then(() => {
+          setHasInteracted(true);
+        })
+        .catch((err) => {
+          console.error("Lỗi khi phát nhạc:", err);
+          alert("Không thể phát nhạc. Trình duyệt có thể đã chặn.");
+        });
+    }
   };
 
   return (
@@ -26,13 +35,13 @@ const Home = () => {
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source src="/images/back.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
+        Trình duyệt của bạn không hỗ trợ video.
       </video>
 
       {/* Audio Element */}
-      <audio ref={audioRef} loop>
+      <audio ref={audioRef} loop preload="auto">
         <source src="/audio/nhac2.mp3" type="audio/mp3" />
-        Your browser does not support the audio element.
+        Trình duyệt của bạn không hỗ trợ audio.
       </audio>
 
       {/* Overlay */}
