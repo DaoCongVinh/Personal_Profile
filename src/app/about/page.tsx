@@ -54,7 +54,7 @@ const About = () => {
               <AvatarFallback>DCV</AvatarFallback>
             </Avatar>
             <div>
-              <h3 className="text-2xl font-semibold">John Doe</h3> {/* Increased text size */}
+              <h3 className="text-2xl font-semibold">Dao Cong Vinh</h3> {/* Increased text size */}
               <p className="text-muted-foreground">Software Engineer</p>
             </div>
           </div>
