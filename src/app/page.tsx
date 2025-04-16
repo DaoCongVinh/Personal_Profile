@@ -25,7 +25,7 @@ const Home = () => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/images/video.mp4" type="video/mp4" />
+        <source src="/images/back.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
